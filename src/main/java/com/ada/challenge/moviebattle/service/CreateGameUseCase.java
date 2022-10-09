@@ -1,6 +1,7 @@
 package com.ada.challenge.moviebattle.service;
 
 import com.ada.challenge.moviebattle.domain.Game;
+import com.ada.challenge.moviebattle.domain.GameStatus;
 import com.ada.challenge.moviebattle.service.port.GamePort;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +19,7 @@ public class CreateGameUseCase implements UserCase<String, Game>{
         return gamePort.save(
                 Game.builder()
                         .createdPlayerId(createdPlayerId)
+                        .status(GameStatus.STARTED)
                         .build()
         );
     }

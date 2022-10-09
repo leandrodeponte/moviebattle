@@ -1,25 +1,27 @@
 package com.ada.challenge.moviebattle.service;
 
 import com.ada.challenge.moviebattle.domain.Game;
+import com.ada.challenge.moviebattle.domain.GameStatus;
 import com.ada.challenge.moviebattle.service.port.GamePort;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
 import java.util.UUID;
 
 @Service
-public class SearchGameUseCase implements UserCase<String, Game>{
+public class FinishGameUseCase implements UserCase<String, Game>{
 
-    private GamePort gamePort;
+    private final GamePort gamePort;
 
-    public SearchGameUseCase(GamePort gamePort) {
+    public FinishGameUseCase(GamePort gamePort) {
         this.gamePort = gamePort;
     }
 
     @Override
     public Game execute(String gameId) {
         var id = UUID.fromString(gameId);
-        var game =  gamePort.findById(id);
-        return game.orElseThrow();
+        Game game =  gamePort.findById(id).orElseThrow();
+        game.setStatus(GameStatus.FINISHED);
+        return gamePort.update(game);
     }
 }
+
