@@ -26,6 +26,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
 @AutoConfigureMockMvc
+@SqlGroup({
+        @Sql(value = "classpath:script/reset.sql", executionPhase = BEFORE_TEST_METHOD),
+        @Sql(value = "classpath:script/game.sql", executionPhase = BEFORE_TEST_METHOD)})
 public class GameServicesIntegrationTest {
 
     @Autowired
@@ -36,7 +39,6 @@ public class GameServicesIntegrationTest {
     private static final String EXISTING_PLAYER_ID = "b5a3e5a0-4820-11ed-b878-0242ac120002";
 
     @Test
-    @SqlGroup({@Sql(value = "classpath:script/game.sql", executionPhase = BEFORE_TEST_METHOD)})
     public void givenGetGame_whenExists_thenReturnSuccess() throws Exception {
         mockMvc.perform(get("/api/game/{gameId}", EXISTING_GAME_ID)
                         .contentType("application/json"))
@@ -66,7 +68,6 @@ public class GameServicesIntegrationTest {
     }
 
     @Test
-    @SqlGroup({@Sql(value = "classpath:script/game.sql", executionPhase = BEFORE_TEST_METHOD)})
     public void givenEndGame_whenGameExists_thenReturnSuccess() throws Exception {
         mockMvc.perform(patch("/api/game/{gameId}/end", EXISTING_GAME_ID))
                 .andExpect(status().isCreated());
