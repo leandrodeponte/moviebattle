@@ -3,6 +3,7 @@ package com.ada.challenge.moviebattle.controller;
 import com.ada.challenge.moviebattle.config.domain.Ranking;
 import com.ada.challenge.moviebattle.service.RankingUseCase;
 import com.ada.challenge.moviebattle.service.exceptions.BusinessException;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +22,7 @@ public class RankingController {
         this.rankingUseCase = rankingUseCase;
     }
 
+    @Operation(summary = "Generates a ranking with N top players and their points")
     @GetMapping
     public @ResponseBody ResponseEntity<Ranking> get() throws BusinessException {
         var ranking = rankingUseCase.execute(NR_PLAYERS);

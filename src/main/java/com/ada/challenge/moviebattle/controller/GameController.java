@@ -5,6 +5,7 @@ import com.ada.challenge.moviebattle.service.CreateGameUseCase;
 import com.ada.challenge.moviebattle.service.FinishGameUseCase;
 import com.ada.challenge.moviebattle.service.SearchGameUseCase;
 import com.ada.challenge.moviebattle.service.exceptions.ResourceNotFoundException;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,18 +31,21 @@ public class GameController {
         this.finishGameUseCase = finishGameUseCase;
     }
 
+    @Operation(summary = "Retrieves a game")
     @GetMapping(value = "/{id}")
     public @ResponseBody ResponseEntity<GameDTO> get(@PathVariable String id) throws ResourceNotFoundException {
         var game = searchGameUseCase.execute(id);
         return ResponseEntity.ok(GameDTO.from(game));
     }
 
+    @Operation(summary = "Creates a new game")
     @PostMapping
     public @ResponseBody ResponseEntity<GameDTO> post(@RequestBody GameDTO gameDTO) throws ResourceNotFoundException {
         var game =  GameDTO.from(createGameUseCase.execute(gameDTO.getCreatedPlayerId()));
         return ResponseEntity.status(HttpStatus.CREATED).body(game);
     }
 
+    @Operation(summary = "Finishes an existing game")
     @PatchMapping("/{id}/end")
     public @ResponseBody ResponseEntity<GameDTO> patch(@PathVariable String id) throws ResourceNotFoundException {
         var game = GameDTO.from(finishGameUseCase.execute(id));
