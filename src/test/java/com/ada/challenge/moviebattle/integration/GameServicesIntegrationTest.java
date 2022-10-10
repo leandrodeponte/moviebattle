@@ -16,9 +16,9 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.UUID;
 
-import static org.springframework.http.converter.json.Jackson2ObjectMapperBuilder.json;
 import static org.springframework.test.context.jdbc.Sql.ExecutionPhase.BEFORE_TEST_METHOD;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.patch;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -53,7 +53,7 @@ public class GameServicesIntegrationTest {
     }
 
     @Test
-    public void givenPostGame_whenRequestIsOk_thenReturnSuccess() throws Exception {
+    public void givenCreateGame_whenRequestIsOk_thenReturnSuccess() throws Exception {
         ObjectMapper mapper = new ObjectMapper();
         mockMvc.perform(post("/api/game")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -63,6 +63,19 @@ public class GameServicesIntegrationTest {
                                         .build())))
                 .andExpect(jsonPath("$.status").value(GameStatus.STARTED.toString()))
                 .andExpect(status().isCreated());
+    }
+
+    @Test
+    @SqlGroup({@Sql(value = "classpath:script/game.sql", executionPhase = BEFORE_TEST_METHOD)})
+    public void givenEndGame_whenGameExists_thenReturnSuccess() throws Exception {
+        mockMvc.perform(patch("/api/game/{gameId}/end", EXISTING_GAME_ID))
+                .andExpect(status().isCreated());
+    }
+
+    @Test
+    public void givenEndGame_whenGameDoesNotExist_thenThrowException() throws Exception {
+        mockMvc.perform(patch("/api/game/{gameId}/end", RANDOM_GAME_ID))
+                .andExpect(status().isNotFound());
     }
 
 }
