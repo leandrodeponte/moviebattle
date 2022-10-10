@@ -29,7 +29,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SqlGroup({
         @Sql(value = "classpath:script/reset.sql", executionPhase = BEFORE_TEST_METHOD),
         @Sql(value = "classpath:script/game.sql", executionPhase = BEFORE_TEST_METHOD)})
-public class GameServicesIntegrationTest {
+public class GameControllerIntegrationTest {
 
     @Autowired
     private MockMvc mockMvc;

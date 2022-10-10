@@ -1,6 +1,5 @@
 package com.ada.challenge.moviebattle.controller;
 
-import com.ada.challenge.moviebattle.controller.dto.GameDTO;
 import com.ada.challenge.moviebattle.controller.dto.RoundDTO;
 import com.ada.challenge.moviebattle.controller.dto.VoteDTO;
 import com.ada.challenge.moviebattle.service.CreateNewRoundUseCase;
