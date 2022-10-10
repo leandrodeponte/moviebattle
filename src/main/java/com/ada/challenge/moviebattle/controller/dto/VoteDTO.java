@@ -1,6 +1,6 @@
 package com.ada.challenge.moviebattle.controller.dto;
 
-import com.ada.challenge.moviebattle.config.domain.VoteRequest;
+import com.ada.challenge.moviebattle.domain.VoteRequest;
 import lombok.Data;
 
 @Data

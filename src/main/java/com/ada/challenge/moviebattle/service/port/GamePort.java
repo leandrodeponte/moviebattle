@@ -1,6 +1,6 @@
 package com.ada.challenge.moviebattle.service.port;
 
-import com.ada.challenge.moviebattle.config.domain.Game;
+import com.ada.challenge.moviebattle.domain.Game;
 
 import java.util.List;
 import java.util.Optional;

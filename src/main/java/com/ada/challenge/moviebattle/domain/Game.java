@@ -1,4 +1,4 @@
-package com.ada.challenge.moviebattle.config.domain;
+package com.ada.challenge.moviebattle.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -36,6 +36,12 @@ public class Game {
         return this.rounds
                 .stream()
                 .anyMatch(r -> !r.isFinished());
+    }
+
+    public Integer getPlayedRounds(){
+        return Math.toIntExact(this.rounds.stream()
+                .filter(Round::isFinished)
+                .count());
     }
 
     public Integer getTotalPoints(){

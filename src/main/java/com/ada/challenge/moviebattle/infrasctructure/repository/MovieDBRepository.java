@@ -1,6 +1,6 @@
 package com.ada.challenge.moviebattle.infrasctructure.repository;
 
-import com.ada.challenge.moviebattle.config.domain.Movie;
+import com.ada.challenge.moviebattle.domain.Movie;
 import com.ada.challenge.moviebattle.service.port.MoviePort;
 import org.springframework.stereotype.Repository;
 

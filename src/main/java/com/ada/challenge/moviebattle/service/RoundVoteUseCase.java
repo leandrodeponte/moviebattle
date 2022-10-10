@@ -1,8 +1,8 @@
 package com.ada.challenge.moviebattle.service;
 
-import com.ada.challenge.moviebattle.config.domain.Round;
-import com.ada.challenge.moviebattle.config.domain.RoundStatus;
-import com.ada.challenge.moviebattle.config.domain.VoteRequest;
+import com.ada.challenge.moviebattle.domain.Round;
+import com.ada.challenge.moviebattle.domain.RoundStatus;
+import com.ada.challenge.moviebattle.domain.VoteRequest;
 import com.ada.challenge.moviebattle.service.exceptions.BusinessException;
 import com.ada.challenge.moviebattle.service.port.RoundPort;
 import org.springframework.stereotype.Service;

@@ -1,4 +1,4 @@
-package com.ada.challenge.moviebattle.config.domain;
+package com.ada.challenge.moviebattle.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,6 +1,6 @@
 package com.ada.challenge.moviebattle.service.port;
 
-import com.ada.challenge.moviebattle.config.domain.Round;
+import com.ada.challenge.moviebattle.domain.Round;
 
 import java.util.Optional;
 import java.util.UUID;

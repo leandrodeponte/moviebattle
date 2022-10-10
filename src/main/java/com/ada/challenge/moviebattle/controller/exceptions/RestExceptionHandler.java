@@ -1,6 +1,7 @@
 package com.ada.challenge.moviebattle.controller.exceptions;
 
 import com.ada.challenge.moviebattle.service.exceptions.BusinessException;
+import com.ada.challenge.moviebattle.service.exceptions.PlayerNotAuthorizedException;
 import com.ada.challenge.moviebattle.service.exceptions.ResourceNotFoundException;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
@@ -40,6 +41,13 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     protected ResponseEntity<Object> handleResourceNotFoundException(ResourceNotFoundException ex, WebRequest request) {
         String error = "The requested resource could not be found.";
         return buildResponseEntity(new ApiError(HttpStatus.NOT_FOUND, error, ex));
+    }
+
+    @ExceptionHandler(PlayerNotAuthorizedException.class)
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    protected ResponseEntity<Object> handlePlayerNotAuthorizedException(PlayerNotAuthorizedException ex, WebRequest request) {
+        String error = "The request was not authorized.";
+        return buildResponseEntity(new ApiError(HttpStatus.UNAUTHORIZED, error, ex));
     }
 
     private ResponseEntity<Object> buildResponseEntity(ApiError apiError) {

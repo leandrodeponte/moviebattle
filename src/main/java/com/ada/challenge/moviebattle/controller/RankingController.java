@@ -1,6 +1,6 @@
 package com.ada.challenge.moviebattle.controller;
 
-import com.ada.challenge.moviebattle.config.domain.Ranking;
+import com.ada.challenge.moviebattle.domain.Ranking;
 import com.ada.challenge.moviebattle.service.RankingUseCase;
 import com.ada.challenge.moviebattle.service.exceptions.BusinessException;
 import io.swagger.v3.oas.annotations.Operation;

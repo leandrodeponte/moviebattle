@@ -1,7 +1,7 @@
 package com.ada.challenge.moviebattle.service;
 
-import com.ada.challenge.moviebattle.config.domain.Game;
-import com.ada.challenge.moviebattle.config.domain.Ranking;
+import com.ada.challenge.moviebattle.domain.Game;
+import com.ada.challenge.moviebattle.domain.Ranking;
 import com.ada.challenge.moviebattle.service.exceptions.BusinessException;
 import com.ada.challenge.moviebattle.service.port.GamePort;
 import com.ada.challenge.moviebattle.service.port.PlayerPort;
@@ -35,7 +35,8 @@ public class RankingUseCase implements UserCase<Integer, Ranking>{
                 .forEach( p -> {
                         var game = getBestGame(p.getId());
                         var points = game.isPresent() ? game.get().getTotalPoints() : 0;
-                        map.put(p.getUsername(), points );
+                        var quizes = game.isPresent() ? game.get().getPlayedRounds() : 1;
+                        map.put(p.getUsername(), points / quizes );
                 });
         var orderedMap = map.entrySet().stream()
                 .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))

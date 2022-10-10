@@ -1,6 +1,6 @@
 package com.ada.challenge.moviebattle.integration;
 
-import com.ada.challenge.moviebattle.config.domain.GameStatus;
+import com.ada.challenge.moviebattle.domain.GameStatus;
 import com.ada.challenge.moviebattle.controller.dto.GameDTO;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;

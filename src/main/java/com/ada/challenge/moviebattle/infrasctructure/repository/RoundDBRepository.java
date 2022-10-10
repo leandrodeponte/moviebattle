@@ -1,6 +1,6 @@
 package com.ada.challenge.moviebattle.infrasctructure.repository;
 
-import com.ada.challenge.moviebattle.config.domain.Round;
+import com.ada.challenge.moviebattle.domain.Round;
 import com.ada.challenge.moviebattle.service.port.RoundPort;
 import org.springframework.stereotype.Repository;
 
