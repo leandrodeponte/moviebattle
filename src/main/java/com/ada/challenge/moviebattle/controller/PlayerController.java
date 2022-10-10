@@ -7,6 +7,10 @@ import com.ada.challenge.moviebattle.service.PlayerLoginUseCase;
 import com.ada.challenge.moviebattle.service.exceptions.BusinessException;
 import com.ada.challenge.moviebattle.service.exceptions.ResourceNotFoundException;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,6 +30,12 @@ public class PlayerController {
     }
 
     @Operation(summary = "Authenticates the user.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "User logged.",
+                    content = { @Content(mediaType = "application/json",
+                            schema = @Schema(implementation = Player.class)) }),
+            @ApiResponse(responseCode = "401", description = "User not authorized.",
+                    content = @Content)})
     @PostMapping("/login")
     public @ResponseBody ResponseEntity<Player> login6(@RequestBody LoginRequest loginRequest )
             throws BusinessException {

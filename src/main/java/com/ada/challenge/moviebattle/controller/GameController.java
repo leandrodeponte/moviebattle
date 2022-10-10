@@ -6,6 +6,10 @@ import com.ada.challenge.moviebattle.service.FinishGameUseCase;
 import com.ada.challenge.moviebattle.service.SearchGameUseCase;
 import com.ada.challenge.moviebattle.service.exceptions.ResourceNotFoundException;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,6 +38,12 @@ public class GameController {
     }
 
     @Operation(summary = "Retrieves a game")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Found the game",
+                    content = { @Content(mediaType = "application/json",
+                            schema = @Schema(implementation = GameDTO.class)) }),
+            @ApiResponse(responseCode = "404", description = "Game not found",
+                    content = @Content)})
     @GetMapping(value = "/{id}")
     public @ResponseBody ResponseEntity<GameDTO> get(@PathVariable String id) throws ResourceNotFoundException {
         var game = searchGameUseCase.execute(id);
@@ -41,6 +51,12 @@ public class GameController {
     }
 
     @Operation(summary = "Creates a new game")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Game created",
+                    content = { @Content(mediaType = "application/json",
+                            schema = @Schema(implementation = GameDTO.class)) }),
+            @ApiResponse(responseCode = "404", description = "Player not found",
+                    content = @Content)})
     @PostMapping
     public @ResponseBody ResponseEntity<GameDTO> post(@RequestBody GameDTO gameDTO) throws ResourceNotFoundException {
         var game =  GameDTO.from(createGameUseCase.execute(gameDTO.getCreatedPlayerId()));
@@ -48,9 +64,14 @@ public class GameController {
     }
 
     @Operation(summary = "Finishes an existing game")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "204", description = "Game ended",
+                    content = { @Content(mediaType = "application/json") }),
+            @ApiResponse(responseCode = "404", description = "Game not found.",
+                    content = @Content)})
     @PatchMapping("/{id}/end")
-    public @ResponseBody ResponseEntity<GameDTO> patch(@PathVariable String id) throws ResourceNotFoundException {
+    public @ResponseBody ResponseEntity patch(@PathVariable String id) throws ResourceNotFoundException {
         var game = GameDTO.from(finishGameUseCase.execute(id));
-        return ResponseEntity.status(HttpStatus.CREATED).body(game);
+        return ResponseEntity.noContent().build();
     }
 }
