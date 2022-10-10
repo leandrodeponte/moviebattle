@@ -1,4 +1,4 @@
-package com.ada.challenge.moviebattle.repository;
+package com.ada.challenge.moviebattle.infrasctructure.repository;
 
 
 import com.ada.challenge.moviebattle.domain.Player;

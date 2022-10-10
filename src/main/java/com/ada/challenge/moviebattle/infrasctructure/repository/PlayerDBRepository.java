@@ -1,9 +1,10 @@
-package com.ada.challenge.moviebattle.repository;
+package com.ada.challenge.moviebattle.infrasctructure.repository;
 
 import com.ada.challenge.moviebattle.domain.Player;
 import com.ada.challenge.moviebattle.service.port.PlayerPort;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -19,5 +20,10 @@ public class PlayerDBRepository implements PlayerPort {
     @Override
     public Optional<Player> findById(UUID id) {
         return repository.findById(id);
+    }
+
+    @Override
+    public List<Player> findAll() {
+        return repository.findAll();
     }
 }

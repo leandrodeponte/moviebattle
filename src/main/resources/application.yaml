@@ -5,6 +5,9 @@ spring:
     driverClassName: org.h2.Driver
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
+  jackson:
+    mapper:
+      accept_case_insensitive_properties: true
 
 ---
 spring:
@@ -19,5 +22,6 @@ spring:
     console:
       enabled: true
   jpa:
+    defer-datasource-initialization: true
     hibernate:
       ddl-auto: update

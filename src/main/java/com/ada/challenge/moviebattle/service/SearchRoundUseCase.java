@@ -1,6 +1,7 @@
 package com.ada.challenge.moviebattle.service;
 
 import com.ada.challenge.moviebattle.domain.Round;
+import com.ada.challenge.moviebattle.service.exceptions.BusinessException;
 import com.ada.challenge.moviebattle.service.port.RoundPort;
 import org.springframework.stereotype.Service;
 
@@ -16,9 +17,9 @@ public class SearchRoundUseCase implements UserCase<String, Round>{
     }
 
     @Override
-    public Round execute(String roundId) {
+    public Round execute(String roundId) throws BusinessException {
         var id = UUID.fromString(roundId);
         var round =  roundPort.findById(id);
-        return round.orElseThrow();
+        return round.orElseThrow(() -> new BusinessException("The Round was not found"));
     }
 }

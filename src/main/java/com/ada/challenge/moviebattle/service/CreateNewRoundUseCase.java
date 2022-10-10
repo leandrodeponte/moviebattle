@@ -1,7 +1,9 @@
 package com.ada.challenge.moviebattle.service;
 
 import com.ada.challenge.moviebattle.domain.Round;
+import com.ada.challenge.moviebattle.domain.RoundStatus;
 import com.ada.challenge.moviebattle.service.exceptions.BusinessException;
+import com.ada.challenge.moviebattle.service.exceptions.ResourceNotFoundException;
 import com.ada.challenge.moviebattle.service.port.GamePort;
 import com.ada.challenge.moviebattle.service.port.RoundPort;
 import org.springframework.stereotype.Service;
@@ -25,15 +27,21 @@ public class CreateNewRoundUseCase implements UserCase<String, Round>{
     @Override
     public Round execute(String gameId) throws BusinessException {
         var id = UUID.fromString(gameId);
-        var game = gamePort.findById(id).orElseThrow();
-        var rounds = game.getRounds()
-                .stream()
-                .anyMatch(r -> !r.isFinished());
-        if(rounds)
+        var game = gamePort.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("The game does not exist."));
+        if(game.hasPendingRounds())
             throw new BusinessException("New round only when current is finished.");
-        return roundPort.save( Round.builder()
+        var rounds = game.getRounds();
+        var newRound = Round.builder()
+                .game(game)
                 .movies(sortMovieUseCase.execute(game))
-                .build());
+                .status(RoundStatus.STARTED)
+                .build();
+        var savedRound = roundPort.save(newRound);
+        rounds.add(savedRound);
+        game.setRounds(rounds);
+        gamePort.update(game);
+        return savedRound;
     }
 
 }

@@ -1,4 +1,4 @@
-package com.ada.challenge.moviebattle.repository;
+package com.ada.challenge.moviebattle.infrasctructure.repository;
 
 import com.ada.challenge.moviebattle.domain.Round;
 import com.ada.challenge.moviebattle.service.port.RoundPort;
@@ -19,7 +19,7 @@ public class RoundDBRepository implements RoundPort {
     @Override
     public Round save(Round round) {
         round.setId(UUID.randomUUID());
-        return  roundJPAEntityRepository.save(round);
+        return roundJPAEntityRepository.save(round);
     }
 
     @Override

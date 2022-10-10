@@ -4,9 +4,9 @@ import com.ada.challenge.moviebattle.domain.Movie;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 public interface MoviePort {
-    Optional<Movie> findById(UUID id);
+    Optional<Movie> findById(String id);
+    Movie save(Movie movie);
     List<Movie> findAll();
 }

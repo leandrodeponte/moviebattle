@@ -14,11 +14,13 @@ public class RoundDTO {
 
     private UUID id;
     private List<Movie> movies;
+    private String selectedMovie;
 
     public static RoundDTO from(Round round){
         return RoundDTO.builder()
                 .id(round.getId())
                 .movies(round.getMovies())
+                .selectedMovie(round.getSelectedMovie() != null ? round.getSelectedMovie().getTitle() : null)
                 .build();
     }
 

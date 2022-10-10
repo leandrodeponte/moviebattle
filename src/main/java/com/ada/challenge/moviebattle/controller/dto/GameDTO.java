@@ -18,7 +18,9 @@ public class GameDTO {
     public static GameDTO from(Game game){
         return GameDTO.builder()
                 .id(game.getId())
-                .createdPlayerId(game.getCreatedPlayerId())
+                .createdPlayerId(game
+                        .getPlayer()
+                        .getId().toString())
                 .status(game.getStatus())
                 .build();
     }

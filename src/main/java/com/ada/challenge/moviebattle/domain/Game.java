@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import java.util.List;
 import java.util.UUID;
@@ -20,15 +21,27 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Game {
+
     @Id
     @Column(columnDefinition = "uuid")
     private UUID id;
-    @OneToMany
-    private List<Player> players;
-    @OneToMany
+    @ManyToOne
+    private Player player;
+    @OneToMany(mappedBy="game")
     private List<Round> rounds;
-    private String createdPlayerId;
     @Enumerated(EnumType.STRING)
     private GameStatus status;
+
+    public Boolean hasPendingRounds(){
+        return this.rounds
+                .stream()
+                .anyMatch(r -> !r.isFinished());
+    }
+
+    public Integer getTotalPoints(){
+        return this.rounds.stream()
+                .map(Round::getPoints)
+                .reduce(0, (a, b) -> a + b);
+    }
 
 }

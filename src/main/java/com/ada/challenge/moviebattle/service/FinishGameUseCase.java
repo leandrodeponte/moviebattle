@@ -2,6 +2,7 @@ package com.ada.challenge.moviebattle.service;
 
 import com.ada.challenge.moviebattle.domain.Game;
 import com.ada.challenge.moviebattle.domain.GameStatus;
+import com.ada.challenge.moviebattle.service.exceptions.ResourceNotFoundException;
 import com.ada.challenge.moviebattle.service.port.GamePort;
 import org.springframework.stereotype.Service;
 
@@ -17,9 +18,10 @@ public class FinishGameUseCase implements UserCase<String, Game>{
     }
 
     @Override
-    public Game execute(String gameId) {
+    public Game execute(String gameId) throws ResourceNotFoundException {
         var id = UUID.fromString(gameId);
-        Game game =  gamePort.findById(id).orElseThrow();
+        Game game =  gamePort.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("The game does not exist."));
         game.setStatus(GameStatus.FINISHED);
         return gamePort.update(game);
     }

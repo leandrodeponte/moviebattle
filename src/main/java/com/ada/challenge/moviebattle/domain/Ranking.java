@@ -5,11 +5,12 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Map;
+
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class VoteRequest {
-    private String roundId;
-    private String movieId;
+public class Ranking {
+    private Map<String, Long> points;
 }
