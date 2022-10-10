@@ -1,7 +1,7 @@
 package com.ada.challenge.moviebattle.controller.dto;
 
-import com.ada.challenge.moviebattle.domain.Movie;
-import com.ada.challenge.moviebattle.domain.Round;
+import com.ada.challenge.moviebattle.config.domain.Movie;
+import com.ada.challenge.moviebattle.config.domain.Round;
 import lombok.Builder;
 import lombok.Data;
 
@@ -20,7 +20,7 @@ public class RoundDTO {
         return RoundDTO.builder()
                 .id(round.getId())
                 .movies(round.getMovies())
-                .selectedMovie(round.getSelectedMovie() != null ? round.getSelectedMovie().getTitle() : null)
+                .selectedMovie(round.getSelectedMovieImdbID() != null ? round.getSelectedMovieImdbID() : null)
                 .build();
     }
 

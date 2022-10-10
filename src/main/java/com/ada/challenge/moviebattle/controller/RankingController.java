@@ -1,6 +1,6 @@
 package com.ada.challenge.moviebattle.controller;
 
-import com.ada.challenge.moviebattle.domain.Ranking;
+import com.ada.challenge.moviebattle.config.domain.Ranking;
 import com.ada.challenge.moviebattle.service.RankingUseCase;
 import com.ada.challenge.moviebattle.service.exceptions.BusinessException;
 import org.springframework.http.ResponseEntity;
@@ -26,4 +26,5 @@ public class RankingController {
         var ranking = rankingUseCase.execute(NR_PLAYERS);
         return ResponseEntity.ok(ranking);
     }
+
 }

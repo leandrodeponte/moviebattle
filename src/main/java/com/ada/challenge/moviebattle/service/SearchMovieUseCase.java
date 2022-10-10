@@ -1,6 +1,6 @@
 package com.ada.challenge.moviebattle.service;
 
-import com.ada.challenge.moviebattle.domain.Movie;
+import com.ada.challenge.moviebattle.config.domain.Movie;
 import com.ada.challenge.moviebattle.service.exceptions.BusinessException;
 import com.ada.challenge.moviebattle.service.port.MoviePort;
 import org.springframework.stereotype.Service;

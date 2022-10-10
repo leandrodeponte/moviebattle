@@ -1,6 +1,6 @@
 package com.ada.challenge.moviebattle.infrasctructure.restclient;
 
-import com.ada.challenge.moviebattle.domain.Movie;
+import com.ada.challenge.moviebattle.config.domain.Movie;
 import com.ada.challenge.moviebattle.infrasctructure.restclient.dto.MovieResponse;
 import com.ada.challenge.moviebattle.service.port.MovieCatalogPort;
 import org.springframework.boot.context.properties.ConfigurationProperties;

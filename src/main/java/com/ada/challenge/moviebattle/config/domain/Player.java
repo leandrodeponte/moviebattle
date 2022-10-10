@@ -1,4 +1,4 @@
-package com.ada.challenge.moviebattle.domain;
+package com.ada.challenge.moviebattle.config.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,6 +19,5 @@ public class Player {
     private UUID id;
     private String username;
     private String password;
-
 
 }

@@ -1,6 +1,6 @@
 package com.ada.challenge.moviebattle.infrasctructure.restclient.dto;
 
-import com.ada.challenge.moviebattle.domain.Movie;
+import com.ada.challenge.moviebattle.config.domain.Movie;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 

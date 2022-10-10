@@ -1,6 +1,6 @@
 package com.ada.challenge.moviebattle.service.port;
 
-import com.ada.challenge.moviebattle.domain.Game;
+import com.ada.challenge.moviebattle.config.domain.Game;
 
 import java.util.List;
 import java.util.Optional;
@@ -11,5 +11,4 @@ public interface GamePort {
     Game update(Game game);
     Optional<Game> findById(UUID id);
     List<Game>findByPlayerId(UUID playerId);
-    List<Game> findAll();
 }

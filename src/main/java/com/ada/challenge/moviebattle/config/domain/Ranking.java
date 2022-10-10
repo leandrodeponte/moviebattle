@@ -1,4 +1,4 @@
-package com.ada.challenge.moviebattle.domain;
+package com.ada.challenge.moviebattle.config.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,5 +12,5 @@ import java.util.Map;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Ranking {
-    private Map<String, Long> points;
+    private Map<String, Integer> points;
 }

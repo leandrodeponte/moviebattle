@@ -1,10 +1,8 @@
 package com.ada.challenge.moviebattle.infrasctructure.repository;
 
-import com.ada.challenge.moviebattle.domain.Movie;
+import com.ada.challenge.moviebattle.config.domain.Movie;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-
-import java.util.UUID;
 
 @Repository
 public interface MovieJPAEntityRepository extends JpaRepository<Movie, String> {

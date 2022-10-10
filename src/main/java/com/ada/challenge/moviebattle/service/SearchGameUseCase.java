@@ -1,6 +1,6 @@
 package com.ada.challenge.moviebattle.service;
 
-import com.ada.challenge.moviebattle.domain.Game;
+import com.ada.challenge.moviebattle.config.domain.Game;
 import com.ada.challenge.moviebattle.service.exceptions.ResourceNotFoundException;
 import com.ada.challenge.moviebattle.service.port.GamePort;
 import org.springframework.stereotype.Service;

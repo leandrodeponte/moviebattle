@@ -1,7 +1,7 @@
 package com.ada.challenge.moviebattle.controller.dto;
 
-import com.ada.challenge.moviebattle.domain.Game;
-import com.ada.challenge.moviebattle.domain.GameStatus;
+import com.ada.challenge.moviebattle.config.domain.Game;
+import com.ada.challenge.moviebattle.config.domain.GameStatus;
 import lombok.Builder;
 import lombok.Data;
 

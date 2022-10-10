@@ -1,6 +1,6 @@
 package com.ada.challenge.moviebattle.infrasctructure.repository;
 
-import com.ada.challenge.moviebattle.domain.Game;
+import com.ada.challenge.moviebattle.config.domain.Game;
 import com.ada.challenge.moviebattle.service.port.GamePort;
 import org.springframework.stereotype.Repository;
 
@@ -20,7 +20,7 @@ public class GameDBRepository implements GamePort {
     @Override
     public Game save(Game game) {
         game.setId(UUID.randomUUID());
-        return  repository.saveAndFlush(game);
+        return repository.save(game);
     }
 
     @Override
@@ -38,8 +38,4 @@ public class GameDBRepository implements GamePort {
         return repository.findByPlayerId(playerId);
     }
 
-    @Override
-    public List<Game> findAll() {
-        return repository.findAll();
-    }
 }

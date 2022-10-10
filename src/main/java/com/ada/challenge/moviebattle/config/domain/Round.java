@@ -1,4 +1,4 @@
-package com.ada.challenge.moviebattle.domain;
+package com.ada.challenge.moviebattle.config.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,9 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import java.util.Comparator;
 import java.util.List;
 import java.util.UUID;
@@ -27,10 +26,9 @@ public class Round {
     @Id
     @Column(columnDefinition = "uuid")
     private UUID id;
-    @OneToMany
+    @ManyToMany
     private List<Movie> movies;
-    @OneToOne
-    private Movie selectedMovie;
+    private String selectedMovieImdbID;
     @Enumerated(EnumType.STRING)
     private RoundStatus status;
     @ManyToOne
@@ -43,7 +41,8 @@ public class Round {
     public Integer getPoints() {
         var bestMovie =  this.movies.stream()
                 .max(Comparator.comparing(Movie::getGrade));
-        if(selectedMovie.equals(bestMovie))
+        if(bestMovie.isPresent()
+                && bestMovie.get().getImdbID().equals(this.selectedMovieImdbID))
             return 1;
         return 0;
     }
