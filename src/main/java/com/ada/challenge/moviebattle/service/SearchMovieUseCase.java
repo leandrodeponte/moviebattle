@@ -15,8 +15,8 @@ public class SearchMovieUseCase implements UserCase<String, Movie>{
     }
 
     @Override
-    public Movie execute(String roundId) throws BusinessException {
-               var round =  moviePort.findById(roundId);
-        return round.orElseThrow(() -> new BusinessException("The Movie was not found"));
+    public Movie execute(String movieId) throws BusinessException {
+       var movie =  moviePort.findById(movieId);
+       return movie.orElseThrow(() -> new BusinessException("The Movie was not found"));
     }
 }
