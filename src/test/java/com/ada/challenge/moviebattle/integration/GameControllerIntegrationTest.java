@@ -70,7 +70,7 @@ public class GameControllerIntegrationTest {
     @Test
     public void givenEndGame_whenGameExists_thenReturnSuccess() throws Exception {
         mockMvc.perform(patch("/api/game/{gameId}/end", EXISTING_GAME_ID))
-                .andExpect(status().isCreated());
+                .andExpect(status().isNoContent());
     }
 
     @Test

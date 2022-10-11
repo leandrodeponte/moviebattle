@@ -32,7 +32,6 @@ public class RoundControllerIntegrationTest {
 
     private static final String NON_EXISTING_GAME_ID = "1f90a112-cbb4-4fda-ba7f-969b66f132f3";
 
-
     @Test
     public void givenPlayerLogin_whenRequestIsOk_thenReturnSuccess() throws Exception {
         mockMvc.perform(post("/api/game/"+EXISTING_GAME_ID+"/round")
