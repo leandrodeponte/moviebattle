@@ -11,6 +11,7 @@ import org.springframework.context.event.EventListener;
 public class MoviebattleApplication {
 
 	private final RetrieveMovieCatalogUseCase movieCatalog;
+	private static final Long NR_MOVIES_LOAD = 10L;
 
 	public MoviebattleApplication(RetrieveMovieCatalogUseCase movieCatalog) {
 		this.movieCatalog = movieCatalog;
@@ -22,7 +23,7 @@ public class MoviebattleApplication {
 
 	@EventListener(ApplicationReadyEvent.class)
 	public void loadMovieFromIMDB() {
-		movieCatalog.execute(1L);
+		movieCatalog.execute(NR_MOVIES_LOAD);
 	}
 
 }

@@ -47,7 +47,7 @@
     Load using webscrappping - OK
     Document using OpenApi 3.0 - OK
     Unit Tests - In Progress
-    Integration Tests - In Progress
+    Integration Tests - OK
     Authentication - ToDo
 
 ## Improvements
