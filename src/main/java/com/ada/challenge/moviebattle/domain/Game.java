@@ -33,6 +33,7 @@ public class Game {
     private GameStatus status;
 
     public Boolean hasPendingRounds(){
+        if(this.rounds == null || this.rounds.isEmpty()) return false;
         return this.rounds
                 .stream()
                 .anyMatch(r -> !r.isFinished());
