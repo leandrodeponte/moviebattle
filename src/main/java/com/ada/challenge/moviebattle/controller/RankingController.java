@@ -1,6 +1,5 @@
 package com.ada.challenge.moviebattle.controller;
 
-import com.ada.challenge.moviebattle.controller.dto.GameDTO;
 import com.ada.challenge.moviebattle.domain.Ranking;
 import com.ada.challenge.moviebattle.service.RankingUseCase;
 import com.ada.challenge.moviebattle.service.exceptions.BusinessException;

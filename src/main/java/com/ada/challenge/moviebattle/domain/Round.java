@@ -39,6 +39,7 @@ public class Round {
     }
 
     public Integer getPoints() {
+        if(this.movies == null) return 0;
         var bestMovie =  this.movies.stream()
                 .max(Comparator.comparing(Movie::getGrade));
         if(bestMovie.isPresent()

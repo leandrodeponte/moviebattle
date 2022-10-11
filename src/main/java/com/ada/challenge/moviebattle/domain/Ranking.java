@@ -5,12 +5,12 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Map;
+import java.util.LinkedHashMap;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class Ranking {
-    private Map<String, Integer> points;
+    private LinkedHashMap<String, Integer> points;
 }

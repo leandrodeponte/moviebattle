@@ -1,17 +1,14 @@
 package com.ada.challenge.moviebattle.controller;
 
-import com.ada.challenge.moviebattle.controller.dto.GameDTO;
 import com.ada.challenge.moviebattle.domain.LoginRequest;
 import com.ada.challenge.moviebattle.domain.Player;
 import com.ada.challenge.moviebattle.service.PlayerLoginUseCase;
 import com.ada.challenge.moviebattle.service.exceptions.BusinessException;
-import com.ada.challenge.moviebattle.service.exceptions.ResourceNotFoundException;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

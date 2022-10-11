@@ -29,7 +29,7 @@ public class RankingUseCase implements UserCase<Integer, Ranking>{
 
     @Override
     public Ranking execute(Integer nrOfPlayers) throws BusinessException {
-        var players = playerPort.findAll();
+       var players = playerPort.findAll();
         var map = new HashMap<String, Integer>();
         players.stream()
                 .forEach( p -> {

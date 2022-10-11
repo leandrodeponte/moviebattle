@@ -3,8 +3,6 @@ package com.ada.challenge.moviebattle.controller.exceptions;
 import com.ada.challenge.moviebattle.service.exceptions.BusinessException;
 import com.ada.challenge.moviebattle.service.exceptions.PlayerNotAuthorizedException;
 import com.ada.challenge.moviebattle.service.exceptions.ResourceNotFoundException;
-import org.springframework.core.Ordered;
-import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
