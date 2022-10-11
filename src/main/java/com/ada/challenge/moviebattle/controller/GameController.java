@@ -29,8 +29,6 @@ public class GameController {
     private final SearchGameUseCase searchGameUseCase;
     private final FinishGameUseCase finishGameUseCase;
 
-    //TODO The game should receive a valid token from an authenticated user
-
     public GameController(CreateGameUseCase createGameUseCase, SearchGameUseCase searchGameUseCase, FinishGameUseCase finishGameUseCase) {
         this.createGameUseCase = createGameUseCase;
         this.searchGameUseCase = searchGameUseCase;

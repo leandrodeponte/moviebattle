@@ -57,7 +57,7 @@ public class RoundController {
     public @ResponseBody ResponseEntity post(@PathVariable String id,
                                                        @RequestBody VoteDTO vote)
             throws BusinessException {
-        var round = RoundDTO.from(roundVoteUseCase.execute(vote.to(id)));
+        RoundDTO.from(roundVoteUseCase.execute(vote.to(id)));
         return ResponseEntity.noContent().build();
     }
 

@@ -37,6 +37,7 @@ public class GameControllerIntegrationTest {
     private static final String RANDOM_GAME_ID = UUID.randomUUID().toString();
     private static final String EXISTING_GAME_ID = "1f90a112-cbb4-4fda-ba7f-969b66f132f2";
     private static final String EXISTING_PLAYER_ID = "b5a3e5a0-4820-11ed-b878-0242ac120002";
+    private ObjectMapper mapper = new ObjectMapper();
 
     @Test
     public void givenGetGame_whenExists_thenReturnSuccess() throws Exception {
@@ -56,7 +57,6 @@ public class GameControllerIntegrationTest {
 
     @Test
     public void givenCreateGame_whenRequestIsOk_thenReturnSuccess() throws Exception {
-        ObjectMapper mapper = new ObjectMapper();
         mockMvc.perform(post("/api/game")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(mapper.writeValueAsString(

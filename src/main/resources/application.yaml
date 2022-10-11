@@ -15,7 +15,7 @@ spring:
     activate:
       on-profile: dev
   datasource:
-    url: jdbc:h2:mem:testdb
+    url: jdbc:h2:mem:moviebattledb
     username: sa
     password: password
   h2:

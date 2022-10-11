@@ -50,4 +50,8 @@ public class Game {
                 .reduce(0, (a, b) -> a + b);
     }
 
+    public Integer calculatePoints() {
+        return (this.getTotalPoints()) / (this.getPlayedRounds() > 0 ? this.getPlayedRounds() : 1);
+    }
+
 }
