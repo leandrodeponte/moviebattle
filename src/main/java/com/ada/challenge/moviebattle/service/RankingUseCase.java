@@ -34,9 +34,8 @@ public class RankingUseCase implements UserCase<Integer, Ranking>{
         players.stream()
                 .forEach( p -> {
                         var game = getBestGame(p.getId());
-                        var points = game.isPresent() ? game.get().getTotalPoints() : 0;
-                        var quizes = game.isPresent() ? game.get().getPlayedRounds() : 1;
-                        map.put(p.getUsername(), points / quizes );
+                        var points = game.isPresent() ? game.get().calculatePoints() : 0;
+                        map.put(p.getUsername(), points );
                 });
         var orderedMap = map.entrySet().stream()
                 .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
